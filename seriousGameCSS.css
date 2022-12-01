@@ -7,13 +7,19 @@ body
 {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+body > *
+{
+    margin: 10px;
 }
 
 header
 {
     display: flex;
-    flex-grow: 1;
+    width: 95%;
 }
 
 header section
@@ -31,11 +37,12 @@ header nav
 
 main
 {
-    flex-grow: 8;
+    flex-grow: 9;
 }
 
 main div.game
 {
+    
     width: 100%;
     height: 100%;
     display: flex;
@@ -43,7 +50,7 @@ main div.game
     justify-content: space-around;
 }
 
-main div.game>*
+main div.game > *
 {
     display: flex;
     justify-content: center;
@@ -54,17 +61,23 @@ main div.game>*
 
 main div.game div.lore
 {
-    flex-grow: 2;
+    flex-grow: 8;
     border: 2px solid black;
     padding: 30px;
     align-content: stretch;
+}
+
+main div.game div.lore p
+{
+    display: flex;
+    max-height: 90%;
+    overflow: scroll;
 }
 
 main div.game div.inputs
 {
     flex-grow: 1;
     padding: 30px;
-    /* flex-direction: column;  */
     align-items: center;
     justify-content: space-evenly;
 }
@@ -72,12 +85,13 @@ main div.game div.inputs
 main div.game div.inputs button
 {
     width: 100%;
-    height: 50%;
+    height: fit-content;
     font-size: 16px;
 }
 
-@media screen and (width<800px)
+@media screen and (width<1000px)
 {
+    
     main div.game div.inputs
     {
         flex-direction: column;
