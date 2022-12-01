@@ -1,0 +1,12 @@
+header
+{
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-content: center;
+}
+
+header section
+{
+    flex-grow: 9;
+}
