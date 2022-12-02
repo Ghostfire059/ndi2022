@@ -165,8 +165,6 @@ const storyData = {
     },
     departUnsafe : {
 		getText() {
-			set_condomTaken(true)
-			set_goodCondom(false)
 			return "Tu arrives à la soirée chez Billy, tu salues les invités et entames des discussions avec tes amis. Tu aperçois soudain la personne qui attire ton regard depuis plusieurs jours.";
 		},
 		getOptions() {
@@ -334,7 +332,7 @@ const storyData = {
 	Liza : {
 		getText() {
 			let sent = "- Non, j'ai oublié";
-			if (get_condomTaken()) {
+			if (get_condomTaken() == "true") {
 				sent = "- Oui, j'ai un préservatif.";
 			}
 			return "- Salut Liza, j&#39;ai une meuf à la soirée qui m&#39;intéresse bien mais je suis pas sûr de ma sécurité si on passe à l&#39;acte ce soir.<br>- Des fois le préservatif crack, ça peut être grave mais y&#39;a des solutions commes le TPE, un traitement d&#39;urgence, si tu le prends assez tôt genre sous 48h ou même des traitements préventifs à prendre en amont si tu sais que tu vas avoir un partenaire ayant potentiellement le VIH. Tu ce qu&#39;il te faut pour te protéger ?<br>" + sent + "<br>- Je sais pas si tu sais mais si tu veux en avoir sans jugement, y&#39;en a en libre accès au planning familial. Et puis dans tous les cas c&#39;est important de se tester régulièrement genre tous les 3 à 6 mois si tu n&#39;as pas de partenaire régulier.<br>- Merci pour tes renseignements.";
@@ -385,7 +383,7 @@ const storyData = {
 					redirect: "quepreli",
 				},
 			];
-			if (get_condomTaken()) {
+			if (get_condomTaken() == "true") {
 				options = [{
 					name: "- Oui t&#39;inquiète",
 					redirect: "capote",
@@ -630,7 +628,7 @@ const storyData = {
 			return [
 				{
 					name: "...",
-					redirect: "end",
+					redirect: "final",
 				},
 			]
 		},
@@ -643,20 +641,21 @@ const storyData = {
 			return [
 				{
 					name: "...",
-					redirect: "end",
+					redirect: "final",
 				},
 			]
 		},
     },
 	pasrisque : {
 		getText() {
+			set_condomTaken(false)
 			return "Nous passons une nuit légendaire ensemble."; //IMG
 		},
 		getOptions() {
 			return [
 				{
 					name: "...",
-					redirect: "end",
+					redirect: "final",
 				},
 			]
 		},
@@ -664,27 +663,17 @@ const storyData = {
 	proteger : {
 		getText() {
 			let sent = "Je vais chercher un préservatif";
-			if (get_condomTaken()) {
+			if (get_condomTaken() == "false") {
 				sent = "Je sors mon préservatif";
 			}
-			return sent + ". Nous avons un rapport protégé.";
+			return sent + ". Nous avons un rapport protégé légendaire.";
 		},
 		getOptions() {
 			return [
 				{
 					name: "...",
-					redirect: "end",
+					redirect: "final",
 				},
-			]
-		},
-    },
-	end : {
-		getText() {
-			return "Tu te réveilles le lendemain chez Billy et croises Manuel à la table du petit déjeuner.";
-		},
-		getOptions() {
-			// PATATA
-			return [
 			]
 		},
     },
@@ -703,26 +692,29 @@ const storyData = {
     },
 	final : {
 		getText() {
-			finalText = "Tu te réveilles le lendemain chez Billy et croises Manuel à la table du petit déjeuner.\n-Hey !\n-Hey !\n-Alors hier soir, ça s'est bien passé avec l\’autre fille ?";
+			restartGame = true;
+			finalText = "Tu te réveilles le lendemain chez Billy et croises Manuel à la table du petit déjeuner.<br>-Hey !<br>-Hey !<br>-Alors hier soir, ça s'est bien passé avec l\’autre fille ?";
 			if (Number(get_glassNumber()) >= 3){
-				finalText = finalText +  "-L’autre fille ? J'ai un peu trop bu, il s’est passé quoi au juste ?\n-Ah bah ça c'est à toi de me le dire ! Je t’ai juste entrevu entrer dans la chambre avec Morgane et le courant avait l’air de bien passer entre vous.\n-...\n-Tu devrais la contacter pour en savoir plus, et potentiellement faire un dépistage. Tu n’aurais sûrement pas dû boire autant\n-Ouai j’ai clairement abusé… J’espère que rien de grave n’en ressortira.\n-Tu as pensé à amener des protections au moins."
-				if(get_condomTaken() == "False"){
-					finalText = finalText + "-...\n-Là tu as vraiment merdé ! Franchement ça t’aurais couté quoi de prendre une capote avec toi. T’as potentiellement chopé la chtouille ou qui sait quoi.\n-Ok j’ai compris. J’aurais vraiment dû agir différemment."
+				finalText = finalText +  "-L’autre fille ? J'ai un peu trop bu, il s’est passé quoi au juste ?<br>-Ah bah ça c'est à toi de me le dire ! Je t’ai juste entrevu entrer dans la chambre avec Morgane et le courant avait l’air de bien passer entre vous.<br>-...<br>-Tu devrais la contacter pour en savoir plus, et potentiellement faire un dépistage. Tu n’aurais sûrement pas dû boire autant<br>-Ouai j’ai clairement abusé… J’espère que rien de grave n’en ressortira.<br>-Tu as pensé à amener des protections au moins."
+				if(get_condomTaken() == "false"){
+					finalText = finalText + "-...<br>-Là tu as vraiment merdé ! Franchement ça t’aurais couté quoi de prendre une capote avec toi. T’as potentiellement chopé la chtouille ou qui sait quoi.<br>-Ok j’ai compris. J’aurais vraiment dû agir différemment."
 				}
-				else if(get_goodCondom() == "False"){
-					finalText = finalText + "-Bien sûre j’en ai attrapé une au fond d’un tiroir avant de partir.\n-Et j’imagine que t’as pas pris le temps de regarder la date de péremption.\n-Comme si c’était vraiment important.\n-Ça l’est. Elle a pu craqué hier et t’en aurais aucune idée vu que tu t’es bourré la gueule.\n-Ok j’ai compris. J’aurais vraiment dû agir différemment."				
+				else if(get_goodCondom() == "false"){
+					finalText = finalText + "-Bien sûre j’en ai attrapé une au fond d’un tiroir avant de partir.<br>-Et j’imagine que t’as pas pris le temps de regarder la date de péremption.<br>-Comme si c’était vraiment important.<br>-Ça l’est. Elle a pu craqué hier et t’en aurais aucune idée vu que tu t’es bourré la gueule.<br>-Ok j’ai compris. J’aurais vraiment dû agir différemment."				
 				}
 				else{
-					finalText = finalText + "-Bien sûr, je suis parti en acheter avant de venir à la soirée.\nT’as au moins ça pour toi, vas te faire dépister au cas où et ne boit plus autant sérieusement.\n-Oui je retiendrais la leçon."	
+					finalText = finalText + "-Bien sûr, je suis parti en acheter avant de venir à la soirée.<br>T’as au moins ça pour toi, vas te faire dépister au cas où et ne boit plus autant sérieusement.<br>-Oui je retiendrais la leçon."	
 				}
-			}
-			else if(get_condomTaken() == "False" || get_goodCondom() == "False" ){
-				finalText = finalText + "-C’était génial ! J’espère la revoir.\n-Cool, vous vous êtes protégés au moins ?\n-On croirait entendre ma mère ! Non on ne s'est pas protégé mais je ne suis pas idiot, je lui ai demandé et elle m'a garrantit que c'était sans danger.\n-Bah bien sûr, car tu peux totalement faire confiance à une inconnue et potentiellement avoir une IST incurable maintenant.\n-Tu dramatises.\n-Vas te faire dépister quand même c’est gratuit, sans ordonnance et sans rendez-vous.\n-Ok, peut-être que j'aurais pu faire différemment, je vais écouter ton conseil."	
-			}
-			else{
-				finalText = finalText + "-C’était génial ! J’espère la revoir.\n-Cool, vous vous êtes protégés au moins ?\n-Évidement, tu me prends pour qui ?\n-Bah bravo champion, tiens moi au courant de comment ça évolue.\n-Avec plaisir."	   
+			} else if(get_condomTaken() == "false" || get_goodCondom() == "false" ) {
+				finalText = finalText + "-C’était génial ! J’espère la revoir.<br>-Cool, vous vous êtes protégés au moins ?<br>-On croirait entendre ma mère ! Non on ne s'est pas protégé mais je ne suis pas idiot, je lui ai demandé et elle m'a garrantit que c'était sans danger.<br>-Bah bien sûr, car tu peux totalement faire confiance à une inconnue et potentiellement avoir une IST incurable maintenant.<br>-Tu dramatises.<br>-Vas te faire dépister quand même c’est gratuit, sans ordonnance et sans rendez-vous.<br>-Ok, peut-être que j'aurais pu faire différemment, je vais écouter ton conseil."	
+			} else{
+				finalText = finalText + "-C’était génial ! J’espère la revoir.<br>-Cool, vous vous êtes protégés au moins ?<br>-Évidement, tu me prends pour qui ?<br>-Bah bravo champion, tiens moi au courant de comment ça évolue.<br>-Avec plaisir."
 			}
 			return finalText
+		},
+		getOptions() {
+			return [
+			]
 		},
     },
 }
