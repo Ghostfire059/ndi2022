@@ -79,6 +79,10 @@ main div.wrapper div.lore p
     padding: 10px;
     display: flex;
     max-height: 90%;
+}
+
+main div.wrapper div.lore
+{
     overflow: scroll;
 }
 
