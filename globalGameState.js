@@ -14,6 +14,9 @@ function initLocalStorage(){
     if (localStorage.getItem("glassNumber") == null){
         localStorage.setItem("glassNumber", 0)
     }
+    if (localStorage.getItem("historicConv") == null){
+        localStorage.setItem("historicConv", "")
+    }
 }
 
 function get_blocName(){
@@ -54,4 +57,12 @@ function get_glassNumber(){
 
 function set_blockName(glassNumber){
     localStorage.setItem("glassNumber", glassNumber)
+}
+
+function get_historicConv(){
+    return localStorage.getItem("historicConv")
+}
+
+function set_blockName(historicConv){
+    localStorage.setItem("historicConv", historicConv)
 }
