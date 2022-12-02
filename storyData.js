@@ -664,4 +664,28 @@ const storyData = {
 			]
 		},
     },
+	final : {
+		getText() {
+			finalText = "-Hey !\n-Hey !\n-Alors hier soir, ça s'est bien passé avec l\’autre fille ?";
+			if (trobu){
+				finalText = finalText +  "-L’autre fille ? J'ai un peu trop bu, il s’est passé quoi au juste ?\n-Ah bah ça c'est à toi de me le dire ! Je t’ai juste entrevu entrer dans la chambre avec Morgane et le courant avait l’air de bien passer entre vous.\n-...\n-Tu devrais la contacter pour en savoir plus, et potentiellement faire un dépistage. Tu n’aurais sûrement pas dû boire autant\n-Ouai j’ai clairement abusé… J’espère que rien de grave n’en ressortira.\n-Tu as pensé à amener des protections au moins."
+				if(noCap){
+					finalText = finalText + "-...\n-Là tu as vraiment merdé ! Franchement ça t’aurais couté quoi de prendre une capote avec toi. T’as potentiellement chopé la chtouille ou qui sait quoi.\n-Ok j’ai compris. J’aurais vraiment dû agir différemment."
+				}
+				else if(capPerime){
+					finalText = finalText + "-Bien sûre j’en ai attrapé une au fond d’un tiroir avant de partir.\n-Et j’imagine que t’as pas pris le temps de regarder la date de péremption.\n-Comme si c’était vraiment important.\n-Ça l’est. Elle a pu craqué hier et t’en aurais aucune idée vu que tu t’es bourré la gueule.\n-Ok j’ai compris. J’aurais vraiment dû agir différemment."				
+				}
+				else if(cap){
+					finalText = finalText + "-Bien sûr, je suis parti en acheter avant de venir à la soirée.\nT’as au moins ça pour toi, vas te faire dépister au cas où et ne boit plus autant sérieusement.\n-Oui je retiendrais la leçon."	
+				}
+			}
+			else if(sexeUnsafe){
+				finalText = finalText + "-C’était génial ! J’espère la revoir.\n-Cool, vous vous êtes protégés au moins ?\n-On croirait entendre ma mère ! Non on ne s'est pas protégé mais je ne suis pas idiot, je lui ai demandé et elle m'a garrantit que c'était sans danger.\n-Bah bien sûr, car tu peux totalement faire confiance à une inconnue et potentiellement avoir une IST incurable maintenant.\n-Tu dramatises.\n-Vas te faire dépister quand même c’est gratuit, sans ordonnance et sans rendez-vous.\n-Ok, peut-être que j'aurais pu faire différemment, je vais écouter ton conseil."	
+			}
+			else if(sexeSafe){
+				finalText = finalText + "-C’était génial ! J’espère la revoir.\n-Cool, vous vous êtes protégés au moins ?\n-Évidement, tu me prends pour qui ?\n-Bah bravo champion, tiens moi au courant de comment ça évolue.\n-Avec plaisir."	   
+			}
+			return finalText
+		},
+    },
 }
