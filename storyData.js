@@ -144,20 +144,12 @@ const storyData = {
 		getText() {
 			set_condomTaken(true)
 			set_goodCondom(true)
-			return "Tu arrives à la soirée chez Billy, tu salues les invités et entames des discussions avec tes amis. Tu aperçois soudain la personne qui attire ton regard depuis plusieurs jours.";
+			return "Tu arrives à la soirée chez Billy, tu salues les invités et entames des discussions avec tes amis. Tu aperçois soudain la fille qui attire ton regard depuis plusieurs jours.";
 		},
 		getOptions() {
 			return [
 				{
-					name: "C&#39;est une femme.",
-					redirect: "action",
-				},
-				{
-					name: "C&#39;est un homme.",
-					redirect: "action",
-				},
-				{
-					name: "C&#39;est une personne non binaire.",
+					name: "...",
 					redirect: "action",
 				},
 			]
@@ -165,20 +157,14 @@ const storyData = {
     },
     departUnsafe : {
 		getText() {
-			return "Tu arrives à la soirée chez Billy, tu salues les invités et entames des discussions avec tes amis. Tu aperçois soudain la personne qui attire ton regard depuis plusieurs jours.";
+			set_condomTaken(true)
+			set_goodCondom(false)
+			return "Tu arrives à la soirée chez Billy, tu salues les invités et entames des discussions avec tes amis. Tu aperçois soudain la fille qui attire ton regard depuis plusieurs jours.";
 		},
 		getOptions() {
 			return [
 				{
-					name: "C&#39;est une femme.",
-					redirect: "action",
-				},
-				{
-					name: "C&#39;est un homme.",
-					redirect: "action",
-				},
-				{
-					name: "C&#39;est une personne non binaire.",
+					name: "...",
 					redirect: "action",
 				},
 			]
@@ -186,20 +172,12 @@ const storyData = {
     },
     departNoCondom : {
 		getText() {
-			return "Tu arrives à la soirée chez Billy, tu salues les invités et entames des discussions avec tes amis. Tu aperçois soudain la personne qui attire ton regard depuis plusieurs jours.";
+			return "Tu arrives à la soirée chez Billy, tu salues les invités et entames des discussions avec tes amis. Tu aperçois soudain la fille qui attire ton regard depuis plusieurs jours.";
 		},
 		getOptions() {
 			return [
 				{
-					name: "C&#39;est une femme.",
-					redirect: "action",
-				},
-				{
-					name: "C&#39;est un homme.",
-					redirect: "action",
-				},
-				{
-					name: "C&#39;est une personne non binaire.",
+					name: "...",
 					redirect: "action",
 				},
 			]
