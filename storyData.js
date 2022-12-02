@@ -1,7 +1,7 @@
 const storyData = {
 	step1 : {
 		getText() {
-			return "Première soirée<br>Je rencontre une belle pe<br>rsonne, elle nous plaît, je lui plaît et on <br>finit dans une chambre.";
+			return "Première soirée<br>Je rencontre une belle personne, elle nous plaît, je lui plaît et on finit dans une chambre.";
 		},
 		getOptions() {
 			return [
