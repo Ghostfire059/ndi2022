@@ -527,6 +527,7 @@ const storyData = {
 			else if(sexeSafe){
 				finalText = finalText + "-C’était génial ! J’espère la revoir.\n-Cool, vous vous êtes protégés au moins ?\n-Évidement, tu me prends pour qui ?\n-Bah bravo champion, tiens moi au courant de comment ça évolue.\n-Avec plaisir."	   
 			}
+			return finalText
 		},
     },
 }
