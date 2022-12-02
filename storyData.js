@@ -114,7 +114,7 @@ const storyData = {
 				},
 				{
 					name: "Tu ne réponds pas ",
-					redirect: "departNoCondom",
+					redirect: "action",
 				},
 			]
 		},
@@ -140,71 +140,6 @@ const storyData = {
 			]
 		},
     },
-	departSafe : {
-		getText() {
-			set_condomTaken(true)
-			set_goodCondom(true)
-			return "Tu arrives à la soirée chez Billy, tu salues les invités et entames des discussions avec tes amis. Tu aperçois soudain la personne qui attire ton regard depuis plusieurs jours.";
-		},
-		getOptions() {
-			return [
-				{
-					name: "C&#39;est une femme.",
-					redirect: "action",
-				},
-				{
-					name: "C&#39;est un homme.",
-					redirect: "action",
-				},
-				{
-					name: "C&#39;est une personne non binaire.",
-					redirect: "action",
-				},
-			]
-		},
-    },
-    departUnsafe : {
-		getText() {
-			return "Tu arrives à la soirée chez Billy, tu salues les invités et entames des discussions avec tes amis. Tu aperçois soudain la personne qui attire ton regard depuis plusieurs jours.";
-		},
-		getOptions() {
-			return [
-				{
-					name: "C&#39;est une femme.",
-					redirect: "action",
-				},
-				{
-					name: "C&#39;est un homme.",
-					redirect: "action",
-				},
-				{
-					name: "C&#39;est une personne non binaire.",
-					redirect: "action",
-				},
-			]
-		},
-    },
-    departNoCondom : {
-		getText() {
-			return "Tu arrives à la soirée chez Billy, tu salues les invités et entames des discussions avec tes amis. Tu aperçois soudain la personne qui attire ton regard depuis plusieurs jours.";
-		},
-		getOptions() {
-			return [
-				{
-					name: "C&#39;est une femme.",
-					redirect: "action",
-				},
-				{
-					name: "C&#39;est un homme.",
-					redirect: "action",
-				},
-				{
-					name: "C&#39;est une personne non binaire.",
-					redirect: "action",
-				},
-			]
-		},
-    },
 	bof : {
 		getText() {
 			return "Tu attrapes un ou deux préservatifs au fond de ton tiroir avant de partir.";
@@ -213,7 +148,7 @@ const storyData = {
 			return [
 				{
 					name: "Tu pars en direction de la soirée.",
-					redirect: "departUnsafe",
+					redirect: "action",
 				},
 			]
 		},
@@ -226,15 +161,15 @@ const storyData = {
 			return [
 				{
 					name: "Tu les prends quand même, la date c&#39;est pas important.",
-					redirect: "departUnsafe",
+					redirect: "action",
 				},
 				{
 					name: "Tu pars en acheter dans le distributeur de la pharmacie d&#39;à côté.",
-					redirect: "departSafe",
+					redirect: "action",
 				},
 				{
 					name: "Tu passeras au supermarché sur le chemin pour acheter une boîte de préservatif.",
-					redirect: "departSafe",
+					redirect: "action",
 				},
 			]
 		},
@@ -247,14 +182,14 @@ const storyData = {
 			return [
 				{
 					name: "...",
-					redirect: "departNoCondom",
+					redirect: "action",
 				},
 			]
 		},
     },
 	action : {
 		getText() {
-			return "Tu observes les gens autour de toi, il y a les fumeurs qui discutent dehors, des amis sont proches du bar à se servir des verres et d&#39;autres dansent au rythme de la musique sur la piste dont cette personne.";
+			return "Tu arrives à la soirée chez Billy, tu salues les invités et entames des discussions avec tes amis. Tu aperçois soudain la personne qui attire ton regard depuis plusieurs jours.\nTu observes les gens autour de toi, il y a les fumeurs qui discutent dehors, des amis sont proches du bar à se servir des verres et d&#39;autres dansent au rythme de la musique sur la piste dont cette personne.";
 		},
 		getOptions() {
 			return [
