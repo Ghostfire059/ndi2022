@@ -71,6 +71,7 @@ main div.wrapper div.lore
     border: 2px solid black;
     flex-direction: column;
     background-color: #d0d0d0;
+    overflow: scroll;
 }
 
 main div.wrapper div.lore p
