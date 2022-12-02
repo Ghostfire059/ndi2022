@@ -15,11 +15,16 @@ function updatePage()
     let options = step.getOptions();
     for(let x in options)
     {
+        let buttonWrapper = document.createElement("div");
+        buttonWrapper.classList.add("buttonWrapper");
+
         let button = document.createElement("button");
         button.innerHTML = options[x].name;
         button.value = options[x].redirect;
         button.onclick = updatePage;
-        inputs[0].appendChild(button);
+
+        buttonWrapper.appendChild(button);
+        inputs[0].appendChild(buttonWrapper);
     }
 
 
@@ -28,10 +33,15 @@ function updatePage()
 
 for(let x in options)
 {
+    let buttonWrapper = document.createElement("div");
+    buttonWrapper.classList.add("buttonWrapper");
+
     let button = document.createElement("button");
     button.innerHTML = options[x].name;
     button.value = options[x].redirect;
     button.onclick = updatePage;
-    inputs[0].appendChild(button);
+
+    buttonWrapper.appendChild(button);
+    inputs[0].appendChild(buttonWrapper);
 }
 
