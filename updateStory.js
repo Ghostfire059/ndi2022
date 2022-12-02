@@ -46,6 +46,7 @@ function updatePage()
     let newP = document.createElement("p");
     
     newP.innerHTML = step.getText();
+    parentContainer.appendChild(document.createElement("hr"));
     parentContainer.appendChild(newP);
 
     initOptions();

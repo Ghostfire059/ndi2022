@@ -4,6 +4,10 @@ html, body
     background-color: #606060;
 }
 
+hr {
+    width: 95%;
+}
+
 body
 {
 	display: flex;
@@ -74,13 +78,14 @@ main div.wrapper div.lore
     border: 2px solid black;
     flex-direction: column;
     background-color: #d0d0d0;
-    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 main div.wrapper div.lore p
 {
     padding: 10px;
-    display: flex;
+    display: inline-block;
     max-height: 90%;
 }
 
@@ -124,10 +129,9 @@ main div.wrapper div.inputs div.buttonWrapper button:hover
     background-color: white;
 }
 
-@media screen and (width<1000px)
+@media screen and (width<800px)
 {
-    
-    main div.game div.inputs
+    main div.wrapper div.inputs
     {
         flex-direction: column;
     }
