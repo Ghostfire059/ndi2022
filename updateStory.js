@@ -12,8 +12,14 @@ function updatePage()
     console.log(inputs.length);
     const step = storyData[this.value]; 
     let parent = p.parentNode;
+    
+    let action = document.createElement("p");
+    action.innerHTML = this.innerHTML;
+
     let newP = document.createElement("p");
+    
     newP.innerHTML = step.getText();
+    parent.appendChild(action);
     parent.appendChild(newP);
     let options = step.getOptions();
     for(let x in options)
