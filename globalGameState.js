@@ -6,10 +6,10 @@ function initLocalStorage(){
         localStorage.setItem("gender", "")
     }
     if (localStorage.getItem("goodCondom") == null){
-        localStorage.setItem("goodCondom", 0)
+        localStorage.setItem("goodCondom", false)
     }
     if (localStorage.getItem("condomTaken") == null){
-        localStorage.setItem("condomTaken", 0)
+        localStorage.setItem("condomTaken", false)
     }
     if (localStorage.getItem("glassNumber") == null){
         localStorage.setItem("glassNumber", 0)

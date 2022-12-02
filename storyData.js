@@ -102,15 +102,6 @@ const storyData = {
 			]
 		},
     },
-	Chambre : {
-		getText() {
-			return "";
-		},
-		getOptions() {
-			return [
-			]
-		},
-    },
 	Chapitre1 : {
 		getText() {
 			return "Tu es un jeune adulte vivant ta belle vie d&#39;étudiant et ce soir c&#39;est le grand soir. Ton ami Billy t&#39;as invité à sa soirée et une personne qui te plait bien sera présente. Tu te prépares tranquillement, te fais à manger et te prépares à partir. Avant de passer le pas de la porte, ton téléphone sonne : ta mère t&#39;appelle, encore ! Tu es relativement pressé mais cela reste ta maman... <br><br>Que fais-tu ?";
@@ -123,7 +114,7 @@ const storyData = {
 				},
 				{
 					name: "Tu ne réponds pas ",
-					redirect: "depart",
+					redirect: "departNoCondom",
 				},
 			]
 		},
@@ -139,7 +130,7 @@ const storyData = {
 					redirect: "ok",
 				},
 				{
-					name: "- T&#39;inquiète je gère ! ",
+					name: "- Ouais ouais c'est ça ! ",
 					redirect: "bof",
 				},
 				{
@@ -149,7 +140,53 @@ const storyData = {
 			]
 		},
     },
-	depart : {
+	departSafe : {
+		getText() {
+			set_condomTaken(true)
+			set_goodCondom(true)
+			return "Tu arrives à la soirée chez Billy, tu salues les invités et entames des discussions avec tes amis. Tu aperçois soudain la personne qui attire ton regard depuis plusieurs jours.";
+		},
+		getOptions() {
+			return [
+				{
+					name: "C&#39;est une femme.",
+					redirect: "action",
+				},
+				{
+					name: "C&#39;est un homme.",
+					redirect: "action",
+				},
+				{
+					name: "C&#39;est une personne non binaire.",
+					redirect: "action",
+				},
+			]
+		},
+    },
+    departUnsafe : {
+		getText() {
+			set_condomTaken(true)
+			set_goodCondom(false)
+			return "Tu arrives à la soirée chez Billy, tu salues les invités et entames des discussions avec tes amis. Tu aperçois soudain la personne qui attire ton regard depuis plusieurs jours.";
+		},
+		getOptions() {
+			return [
+				{
+					name: "C&#39;est une femme.",
+					redirect: "action",
+				},
+				{
+					name: "C&#39;est un homme.",
+					redirect: "action",
+				},
+				{
+					name: "C&#39;est une personne non binaire.",
+					redirect: "action",
+				},
+			]
+		},
+    },
+    departNoCondom : {
 		getText() {
 			return "Tu arrives à la soirée chez Billy, tu salues les invités et entames des discussions avec tes amis. Tu aperçois soudain la personne qui attire ton regard depuis plusieurs jours.";
 		},
@@ -178,7 +215,7 @@ const storyData = {
 			return [
 				{
 					name: "Tu pars en direction de la soirée.",
-					redirect: "depart",
+					redirect: "departUnsafe",
 				},
 			]
 		},
@@ -191,15 +228,15 @@ const storyData = {
 			return [
 				{
 					name: "Tu les prends quand même, la date c&#39;est pas important.",
-					redirect: "depart",
+					redirect: "departUnsafe",
 				},
 				{
 					name: "Tu pars en acheter dans le distributeur de la pharmacie d&#39;à côté.",
-					redirect: "depart",
+					redirect: "departSafe",
 				},
 				{
 					name: "Tu passeras au supermarché sur le chemin pour acheter une boîte de préservatif.",
-					redirect: "depart",
+					redirect: "departSafe",
 				},
 			]
 		},
@@ -212,7 +249,7 @@ const storyData = {
 			return [
 				{
 					name: "...",
-					redirect: "depart",
+					redirect: "departNoCondom",
 				},
 			]
 		},
@@ -313,7 +350,7 @@ const storyData = {
     },
 	Freddy : {
 		getText() {
-			return "- Salut Freddy, je suis intéressé par un.e mec.meuf de la soirée mais je suis pas sûr de ma sécurité si on passe à l&#39;acte ce soir.<br>- Si je peux te donner un seul conseil c&#39;est ne fait pas comme moi, pense à te protéger dès le moindre doute.<br>- C&#39;est vrai ça, comment tu as su que tu est séropositif ?<br>- J&#39;ai fais la gaffe une fois de vouloir profiter sans me prendre la tête et puis je suis pas aller faire les tests au bon moment par peur d&#39;être jugé.<br>- Et tu fais comment pour vivre en étant séropositif ?<br>- Bah je prend un traitement pour protéger mes partenaires et avoir une charge virale nulle. Tu savais qu&#39;on peux vivre avec le VIH sans le refiler aux autres ?";
+			return "- Salut Freddy, je suis intéressé par une meuf de la soirée mais je suis pas sûr de ma sécurité si on passe à l&#39;acte ce soir.<br>- Si je peux te donner un seul conseil c&#39;est ne fait pas comme moi, pense à te protéger dès le moindre doute.<br>- C&#39;est vrai ça, comment tu as su que tu es séropositif ?<br>- J&#39;ai fais la gaffe une fois de vouloir profiter sans me prendre la tête et puis je suis pas aller faire les tests au bon moment par peur d&#39;être jugé.<br>- Et tu fais comment pour vivre en étant séropositif ?<br>- Bah je prend un traitement pour protéger mes partenaires et avoir une charge virale nulle. Tu savais qu&#39;on peux vivre avec le VIH sans le refiler aux autres ?";
 		},
 		getOptions() {
 			return [
@@ -359,7 +396,7 @@ const storyData = {
     },
 	capote : {
 		getText() {
-			return " - Elle est pas périmée, tu sais que ça peut représenter un risque  ?";
+			return " - Elle est pas périmée ? Tu sais que ça peut représenter un risque.";
 		},
 		getOptions() {
 			return [
@@ -570,7 +607,7 @@ const storyData = {
     },
 	lesinconnus : {
 		getText() {
-			return "*image des inconnus";
+			return "*image des inconnus"; //IMG
 		},
 		getOptions() {
 			return [
