@@ -172,6 +172,8 @@ const storyData = {
     },
     departNoCondom : {
 		getText() {
+			set_goodCondom(false)
+    		set_condomTaken(false)
 			return "Tu arrives à la soirée chez Billy, tu salues les invités et entames des discussions avec tes amis. Tu aperçois soudain la fille qui attire ton regard depuis plusieurs jours.";
 		},
 		getOptions() {
@@ -232,7 +234,7 @@ const storyData = {
     },
 	action : {
 		getText() {
-			return "Tu observes les gens autour de toi, il y a les fumeurs qui discutent dehors, des amis sont proches du bar à se servir des verres et d&#39;autres dansent au rythme de la musique sur la piste dont cette personne.";
+			return "Tu arrives à la soirée chez Billy, tu salues les invités et entames des discussions avec tes amis. Tu aperçois soudain la personne qui attire ton regard depuis plusieurs jours.\nTu observes les gens autour de toi, il y a les fumeurs qui discutent dehors, des amis sont proches du bar à se servir des verres et d&#39;autres dansent au rythme de la musique sur la piste dont cette personne.";
 		},
 		getOptions() {
 			return [
