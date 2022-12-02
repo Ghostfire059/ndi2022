@@ -1,4 +1,116 @@
+let restartGame = false;
+
+function get_blockName(){
+    return localStorage.getItem("blockName")
+}
+
+function set_blockName(blocName){
+    localStorage.setItem("blockName", blocName)
+}
+
+function get_gender(){
+    return localStorage.getItem("gender")
+}
+
+function set_gender(gender){
+    localStorage.setItem("gender", gender)
+}
+
+function get_goodCondom(){
+    return localStorage.getItem("goodCondom")
+}
+
+function set_goodCondom(goodCondom){
+    localStorage.setItem("goodCondom", goodCondom)
+}
+
+function get_condomTaken(){
+    return localStorage.getItem("condomTaken")
+}
+
+function set_condomTaken(condomTaken){
+    localStorage.setItem("condomTaken", condomTaken)
+}
+
+function get_glassNumber(){
+    return localStorage.getItem("glassNumber")
+}
+
+function set_glassNumber(glassNumber){
+    localStorage.setItem("glassNumber", glassNumber)
+}
+
+function get_historicConv(){
+    return localStorage.getItem("historicConv")
+}
+
+function set_historicConv(historicConv){
+    localStorage.setItem("historicConv", historicConv)
+}
+
 const storyData = {
+	TropBu_Chapitre1 : {
+		getText() {
+			return "Après quelques verres, Kevin t&#39;approches : <br>&quot;Yo mec, tu sembles pas aller très bien, ça te dirait un petit remontant&quot;<br>Tu baisses les yeux et remarque un cachet dans sa main";
+		},
+		getOptions() {
+			return [
+				{
+					name: "Le prendre, il ne peut pas me vouloir du mal ",
+					redirect: "FinalDrogue",
+				},
+				{
+					name: "Je le sens pas, je vais rester à l&#39;alcool ",
+					redirect: "TropBu_Chapitre2",
+				},
+			]
+		},
+    },
+	FinalDrogue : {
+		getText() {
+			restartGame = true;
+			return "Tu te réveille le lendemain dans un endroit complètement inconnu et avec un souvenir très flou et très mauvais de la soirée qui s’est passée. Tu ressens une vive douleur dans ton bras gauche.Tu aurais fini par essayer quelque chose de plus fort et l’aiguille ne devait pas être très propre.<br><br>Après quelques jours, les analyses te reviennent positives au VIH. Malheureusement, il existe plus d’un moyen d&#39;attraper le VIH et il ne faut pas oublier qu’une drogue peut en amener à une autre. La drogue est un sujet sérieux qui peut détruire une vie, même si essayé pour la première fois. Heureusement tu apprendras que des traitements peuvent être mis en place pour le VIH et que ton espérance de vie ne sera pas spécialement impactée. Néanmoins tu passeras le restant de ta vie avec ce stigmate.";
+		},
+		getOptions() {
+			return [
+			]
+		},
+    },
+	TropBu_Chapitre2 : {
+		getText() {
+			return "Tu quittes donc Kevin et repars vers la soirée en titubant légèrement";
+		},
+		getOptions() {
+			return [
+				{
+					name: "Tu rejoins tes amis. Après tout ils pourront t&#39;aider ",
+					redirect: "FinalSanguin",
+				},
+				{
+					name: "Tu te rapproches de elle. C&#39;est sans doute ta dernière de l&#39;approcher aujourd&#39;hui ",
+					redirect: "Chambre",
+				},
+			]
+		},
+    },
+	FinalSanguin : {
+		getText() {
+			return "La soirée se poursuit tranquillement jusqu&#39;à qu&#39;un événement inattendu vienne perturber la fête. Un inconnu vient de s&#39;effondrer devant vous. Il semble qu&#39;il avait aussi bien bu. Dans sa chute, il se coupe avec un couteau qui se trouvait sur le sol. Tu cherches à l&#39;aider à se relever mais tu te coupes à ton tour et en le relevant, ton sang finit par se mélanger au sien. On vous soigne rapidement et tu rentres chez toi tranquillement.<br><br>Le lendemain matin, ton amie liza vient te trouver avec l&#39;air grave. L&#39;inconnu avec lequel tu es rentré en contact serait atteint du VIH et ton amie t&#39;annonce difficilement que tu as très probablement été contaminé. En effet, le VIH peut aussi s&#39;attraper par transfert sanguin. Cependant, tu as été mis au courant suffisamment tôt, il te sera donc possible de suivre un traitement et ta vie ne sera pas en danger. Malheureusement tu devras quand même vivre avec cette maladie pour le restant de tes jours.";
+		},
+		getOptions() {
+			return [
+			]
+		},
+    },
+	Chambre : {
+		getText() {
+			return "";
+		},
+		getOptions() {
+			return [
+			]
+		},
+    },
 	Chapitre1 : {
 		getText() {
 			return "Tu es un jeune adulte vivant ta belle vie d&#39;étudiant et ce soir c&#39;est le grand soir. Ton ami Billy t&#39;as invité à sa soirée et une personne qui te plait bien sera présente. Tu te prépares tranquillement, te fais à manger et te prépares à partir. Avant de passer le pas de la porte, ton téléphone sonne : ta mère t&#39;appelle, encore ! Tu es relativement pressé mais cela reste ta maman... <br><br>Que fais-tu ?";
@@ -39,7 +151,7 @@ const storyData = {
     },
 	depart : {
 		getText() {
-			return "Tu arrives à la soirée chez Billy, tu salues les invités et entames des discussions avec tes amis. Tu aperçois soudain la personne qui attire ton regard depuis plusieurs jours. @globulus@";
+			return "Tu arrives à la soirée chez Billy, tu salues les invités et entames des discussions avec tes amis. Tu aperçois soudain la personne qui attire ton regard depuis plusieurs jours.";
 		},
 		getOptions() {
 			return [
@@ -149,7 +261,7 @@ const storyData = {
     },
 	danse : {
 		getText() {
-			return "Après avoir danser un moment avec elle,@globulus@ vous discutez pendant un long moment et le courant passe bien. Vous montez à l&#39;étage pour être au calme dans une chambre.";
+			return "Après avoir danser un moment avec elle, vous discutez pendant un long moment et le courant passe bien. Vous montez à l&#39;étage pour être au calme dans une chambre.";
 		},
 		getOptions() {
 			return [
@@ -162,9 +274,18 @@ const storyData = {
     },
 	verre1 : {
 		getText() {
+			set_glassNumber(Number(get_glassNumber()) + 1);
 			return "Tu bois un verre d&#39;alcool.";
 		},
 		getOptions() {
+			if (get_glassNumber() == 3) {
+				return [
+					{
+						name: "...",
+						redirect: "TropBu_Chapitre1",
+					},
+				]
+			}
 			return [
 				{
 					name: "...",
@@ -175,7 +296,11 @@ const storyData = {
     },
 	Liza : {
 		getText() {
-			return "- Salut Liza, j&#39;ai un.e mec.meuf à la soirée qui m&#39;intéresse bien mais je suis pas sûr de ma sécurité si on passe à l&#39;acte ce soir.<br>- Des fois le préservatif crack, ça peut être grave mais y&#39;a des solutions commes le TPE, un traitement d&#39;urgence, si tu le prends assez tôt genre sous 48h ou même des traitements préventifs à prendre en amont si tu sais que tu vas avoir un partenaire ayant potentiellement le VIH. Tu ce qu&#39;il te faut pour te protéger ?<br>- Oui j&#39;ai un préservatif/Non j&#39;ai oublié@globulus@<br>- Je sais pas si tu sais mais si tu veux en avoir sans jugement, y&#39;en a en libre accès au planning familial. Et puis dans tous les cas c&#39;est important de se tester régulièrement genre tous les 3 à 6 mois si tu n&#39;as pas de partenaire régulier.<br>- Merci pour tes renseignements.";
+			let sent = "- Non, j'ai oublié";
+			if (get_condomTaken()) {
+				sent = "- Oui, j'ai un préservatif.";
+			}
+			return "- Salut Liza, j&#39;ai une meuf à la soirée qui m&#39;intéresse bien mais je suis pas sûr de ma sécurité si on passe à l&#39;acte ce soir.<br>- Des fois le préservatif crack, ça peut être grave mais y&#39;a des solutions commes le TPE, un traitement d&#39;urgence, si tu le prends assez tôt genre sous 48h ou même des traitements préventifs à prendre en amont si tu sais que tu vas avoir un partenaire ayant potentiellement le VIH. Tu ce qu&#39;il te faut pour te protéger ?<br>" + sent + "<br>- Je sais pas si tu sais mais si tu veux en avoir sans jugement, y&#39;en a en libre accès au planning familial. Et puis dans tous les cas c&#39;est important de se tester régulièrement genre tous les 3 à 6 mois si tu n&#39;as pas de partenaire régulier.<br>- Merci pour tes renseignements.";
 		},
 		getOptions() {
 			return [
@@ -205,14 +330,11 @@ const storyData = {
     },
 	Manuel : {
 		getText() {
-			return "- Salut Manu, t&#39;as vu le.a mec.meuf là-bas iel me plaît bien.<br>- T&#39;as une capote au cas où ?<br> @globulus@<br> ";
+			let sent = ""
+			return "- Salut Manu, t&#39;as vu la meuf là-bas elle me plaît bien.<br>- T&#39;as une capote au cas où ?";
 		},
 		getOptions() {
-			return [
-				{
-					name: "- Oui t&#39;inquiète",
-					redirect: "capote",
-				},
+			let options = [
 				{
 					name: "- Non, t&#39;en as pas une s&#39;il te plaît ?",
 					redirect: "pascapoteManu",
@@ -225,7 +347,14 @@ const storyData = {
 					name: "- Au pire on fera que des prélis",
 					redirect: "quepreli",
 				},
-			]
+			];
+			if (get_condomTaken()) {
+				options = [{
+					name: "- Oui t&#39;inquiète",
+					redirect: "capote",
+				}]
+			}
+			return options;
 		},
     },
 	capote : {
@@ -247,7 +376,9 @@ const storyData = {
     },
 	pascapoteManu : {
 		getText() {
-			return "- Si tiens !@globulus@";
+			set_condomTaken(true);
+			set_goodCondom(true);
+			return "- Si tiens !";
 		},
 		getOptions() {
 			return [
@@ -303,17 +434,39 @@ const storyData = {
     },
 	perime : {
 		getText() {
-			return "- T&#39;en veux une au cas où ?@globulus@";
+			return "- T&#39;en veux une au cas où ?";
 		},
 		getOptions() {
 			return [
 				{
 					name: "- Oui s&#39;il te plaît",
-					redirect: "actionbis",
+					redirect: "actionbisnoperim",
 				},
 				{
 					name: "- Pas besoin",
 					redirect: "péventif",
+				},
+			]
+		},
+    },
+    actionbisnoperim : {
+		getText() {
+			set_goodCondom(true);
+			return "";
+		},
+		getOptions() {
+			return [
+				{
+					name: "Tu va parler à des amis.",
+					redirect: "discussion",
+				},
+				{
+					name: "Tu vas danser afin de te raprocher d&#39;elle.",
+					redirect: "danse",
+				},
+				{
+					name: "Tu vas boire un autre verre.",
+					redirect: "verre1",
 				},
 			]
 		},
@@ -460,7 +613,7 @@ const storyData = {
     },
 	pasrisque : {
 		getText() {
-			return "Nous passons une nuit légendaire ensemble. *gif legendary";
+			return "Nous passons une nuit légendaire ensemble."; //IMG
 		},
 		getOptions() {
 			return [
@@ -473,7 +626,11 @@ const storyData = {
     },
 	proteger : {
 		getText() {
-			return "Je sors mon préservatif/Je vais chercher un préservatif@globulus@. Nous avons un rapport protégé.";
+			let sent = "Je vais chercher un préservatif";
+			if (get_condomTaken()) {
+				sent = "Je sors mon préservatif";
+			}
+			return sent + ". Nous avons un rapport protégé.";
 		},
 		getOptions() {
 			return [
@@ -489,6 +646,7 @@ const storyData = {
 			return "Tu te réveilles le lendemain chez Billy et croises Manuel à la table du petit déjeuner.";
 		},
 		getOptions() {
+			// PATATA
 			return [
 			]
 		},
