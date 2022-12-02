@@ -1,6 +1,7 @@
 html, body
 {
     height: 100%;
+    background-color: #606060;
 }
 
 body
@@ -40,6 +41,8 @@ header div.wrapper img
 header div.wrapper div
 {
     flex-grow: 8;
+    align-self: center;
+    color : #ffff00;
 }
 
 header div.wrapper nav
