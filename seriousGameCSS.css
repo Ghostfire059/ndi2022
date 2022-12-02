@@ -69,6 +69,7 @@ main div.wrapper div.lore
     width: 100%;
     display: flex;
     border: 2px solid black;
+    background-color: #d0d0d0;
 }
 
 main div.wrapper div.lore p
@@ -105,7 +106,13 @@ main div.wrapper div.inputs div.buttonWrapper button
     width: 60%;
     justify-content: center;
     font-size: 16px;
+    background-color: #b0b0b0;
+    transition: 2s ease-in;
+}
 
+main div.wrapper div.inputs div.buttonWrapper button:hover
+{
+    background-color: white;
 }
 
 @media screen and (width<1000px)
