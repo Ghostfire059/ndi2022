@@ -51,7 +51,7 @@ function set_historicConv(historicConv){
 const storyData = {
 	TropBu_Chapitre1 : {
 		getText() {
-			return "Après quelques verres, Kevin t&#39;approches : <br>&quot;Yo mec, tu sembles pas aller très bien, ça te dirait un petit remontant&quot;<br>Tu baisses les yeux et remarque un cachet dans sa main";
+			return "Après quelques verres,&nbsp<a href=\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\">Rick</a>&nbspt&#39;approches : <br>&quot;Yo mec, tu sembles pas aller très bien, ça te dirait un petit remontant&quot;<br>Tu baisses les yeux et remarque un cachet dans sa main";
 		},
 		getOptions() {
 			return [
@@ -78,7 +78,7 @@ const storyData = {
     },
 	TropBu_Chapitre2 : {
 		getText() {
-			return "Tu quittes donc Kevin et repars vers la soirée en titubant légèrement";
+			return "Tu quittes donc &nbsp<a href=\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\"> Rick </a>&nbspet repars vers la soirée en titubant légèrement";
 		},
 		getOptions() {
 			return [
@@ -570,7 +570,7 @@ const storyData = {
     },
 	lesinconnus : {
 		getText() {
-			return "*image des inconnus";
+			return "<img src=\"https://cdn.discordapp.com/attachments/1033089783825703013/1048088153996656741/ingrid-est-ce-que-tu-baises.jpg\">";
 		},
 		getOptions() {
 			return [
